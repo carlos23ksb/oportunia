@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Oportunia — Descubre oportunidades, ofrece tus habilidades, crea negocios</title>
+<meta name="description" content="Oportunia: publica lo que necesitas, ofrece una habilidad, comparte una idea de negocio o encuentra oportunidades para ganar dinero. Internacional.">
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <a href="#/" class="logo" aria-label="Oportunia inicio">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="30" height="30" fill="none"><defs><linearGradient id="lg1" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#8b5cf6"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs><circle cx="16" cy="16" r="14" fill="url(#lg1)"/><path d="M10 17.5 14.5 22 22 10.5" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="logo-word">Oportun<em>ia</em></span>
+    </a>
+    <nav class="mainnav" id="mainnav" aria-label="Navegación principal">
+      <a href="#/explorar" data-nav="explorar">Explorar</a>
+      <a href="#/publicar" data-nav="publicar">Publicar</a>
+      <a href="#/panel" data-nav="panel">Mi panel</a>
+      <a href="#/favoritos" data-nav="favoritos">Favoritos</a>
+      <a href="#/admin" data-nav="admin" id="nav-admin" hidden>Administración</a>
+    </nav>
+    <div class="topbar-actions" id="topbar-actions"><!-- auth buttons rendered by JS --></div>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="modebar" id="modebar" hidden>
+  <span class="mode-badge" id="mode-badge"></span>
+  <span id="mode-text"></span>
+</div>
+
+<main id="app" aria-live="polite"></main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-word">Oportun<em>ia</em></span>
+      <p>Descubre oportunidades, conecta personas y genera ingresos. Una plataforma internacional, hecha para que cualquiera pueda publicar y encontrar.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Enlaces del pie de página">
+      <a href="#/explorar">Explorar oportunidades</a>
+      <a href="#/publicar">Publicar</a>
+      <a href="#/planes">Planes y destacados</a>
+      <a href="#/panel">Mi panel</a>
+    </nav>
+    <div class="footer-note">
+      <p id="footer-mode"></p>
+      <button class="btn btn-ghost btn-sm" id="btn-reset-demo" type="button" data-action="reset-demo">Restablecer demo</button>
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 Oportunia. Hecho con fines de demostración y crecimiento. Los pagos reales requieren configuración externa (ver README).</p>
+</footer>
+
+<nav class="bottomnav" aria-label="Navegación móvil">
+  <a href="#/" data-nav="inicio">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>
+    <span>Inicio</span>
+  </a>
+  <a href="#/explorar" data-nav="explorar">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <span>Explorar</span>
+  </a>
+  <a href="#/publicar" data-nav="publicar" class="bottomnav-cta">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+    <span>Publicar</span>
+  </a>
+  <a href="#/favoritos" data-nav="favoritos">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5C7 16.5 3 13.3 3 9.3 3 6.4 5.2 4.5 7.7 4.5c1.7 0 3.3.9 4.3 2.4 1-1.5 2.6-2.4 4.3-2.4 2.5 0 4.7 1.9 4.7 4.8 0 4-4 7.2-9 11.2Z"/></svg>
+    <span>Favoritos</span>
+  </a>
+  <a href="#/panel" data-nav="panel">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+    <span>Mi panel</span>
+  </a>
+</nav>
+
+<div class="toast-wrap" id="toast-wrap" aria-live="assertive"></div>
+<div class="modal-root" id="modal-root" hidden></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
